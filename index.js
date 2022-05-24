@@ -1,9 +1,15 @@
+// import express
 const express = require('express')
-const cors = require('cors')
 
-
+// import  cors
+const cors = require('cors');
+// const Connection = require('mysql2/typings/mysql/lib/Connection');
+ 
+// create Connection app 
 const app = express();
 
+
+// create new routes
 app.get('/task', (req, res) =>{
   res.send("Hello World")
 })
