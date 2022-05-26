@@ -17,10 +17,10 @@ app.get('/task', (req, res) =>{
   res.send("Hello World")
 })
 
+
+
 app.post('/addtask', (req, res) => {
   console.log(req.body)
-  // let querys =
-  //   "INSERT INTO `users`(`name`, `email`, `user_id`, `password`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')";
   const ADD_QUERY =
     "INSERT INTO `users`(`name`, `email`, `user_id`, `password`) VALUES (" + `'${req.body.userdata.name}',` + `'${req.body.userdata.email}',` +`'${req.body.userdata.id}',`+`'${req.body.userdata.password}'` + ")"; 
 
@@ -29,8 +29,12 @@ app.post('/addtask', (req, res) => {
   });
 }) 
 
-app.get('/delete', (req, res) => {
-  res.send("You can delete")
+app.get('/users', (req, res) => {
+  const myQuery = "SELECT * FROM `users`";
+  conn.query(myQuery, (err, response) => {
+    // console.log(err);
+    res.send(response)
+  });
 })
 
 app.listen(4000, () =>{
