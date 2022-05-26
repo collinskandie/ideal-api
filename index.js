@@ -28,12 +28,20 @@ app.post('/addtask', (req, res) => {
     console.log(err);
   });
 }) 
-
+ 
 app.get('/users', (req, res) => {
   const myQuery = "SELECT * FROM `users`";
   conn.query(myQuery, (err, response) => {
     // console.log(err);
     res.send(response)
+  });
+})
+
+app.get('/email', (req, res) =>{
+  const myQuery = "SELECT email FROM `users`";
+  conn.query(myQuery, (err, response) => {
+    // console.log(err);
+    res.send(response);
   });
 })
 
