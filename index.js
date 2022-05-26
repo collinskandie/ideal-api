@@ -1,21 +1,25 @@
 // import express
 const express = require('express')
 
-// import  cors
 const cors = require('cors');
 // const Connection = require('mysql2/typings/mysql/lib/Connection');
- 
+
+// import bodyparser
+
+const bodyparser = require('body-parser')
+
 // create Connection app 
 const app = express();
 
-
+app.use(cors())
+app.use(bodyparser.json())
 // create new routes
 app.get('/task', (req, res) =>{
   res.send("Hello World")
 })
 
-app.get('/addnew', (req, res) => {
-  res.send("You can add")
+app.post('/addnew', (req, res) => {
+  console.log(req.body)
 })
 
 app.get('/delete', (req, res) => {
