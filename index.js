@@ -19,7 +19,7 @@ app.get('/task', (req, res) =>{
 
 
 
-app.post('/addtask', (req, res) => {
+app.post('/adduser', (req, res) => {
   console.log(req.body)
   const ADD_QUERY =
     "INSERT INTO `users`(`name`, `email`, `user_id`, `password`) VALUES (" + `'${req.body.userdata.name}',` + `'${req.body.userdata.email}',` +`'${req.body.userdata.id}',`+`'${req.body.userdata.password}'` + ")"; 
