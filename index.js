@@ -1,8 +1,7 @@
 // import express
 const express = require('express')
-
+const conn = require("./db");
 const cors = require('cors');
-// const Connection = require('mysql2/typings/mysql/lib/Connection');
 
 // import bodyparser
 
@@ -18,9 +17,17 @@ app.get('/task', (req, res) =>{
   res.send("Hello World")
 })
 
-app.post('/addnew', (req, res) => {
+app.post('/addtask', (req, res) => {
   console.log(req.body)
-})
+  // let querys =
+  //   "INSERT INTO `users`(`name`, `email`, `user_id`, `password`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')";
+  const ADD_QUERY =
+    "INSERT INTO `users`(`name`, `email`, `user_id`, `password`) VALUES (" + `'${req.body.userdata.name}',` + `'${req.body.userdata.email}',` +`'${req.body.userdata.id}',`+`'${req.body.userdata.password}'` + ")"; 
+
+  conn.query(ADD_QUERY, (err) => { 
+    console.log(err);
+  });
+}) 
 
 app.get('/delete', (req, res) => {
   res.send("You can delete")
