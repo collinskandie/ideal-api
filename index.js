@@ -9,6 +9,7 @@ const bodyparser = require('body-parser')
 
 // create Connection app 
 const app = express();
+// app.use(express.static("public"))
 
 app.use(cors())
 app.use(bodyparser.json())
@@ -45,6 +46,6 @@ app.get('/email', (req, res) =>{
   });
 })
 
-app.listen(4000, () =>{
+app.listen(process.env.PORT || 4000, () =>{
   console.log("runing on port 4000")
 })
